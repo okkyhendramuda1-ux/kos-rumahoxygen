@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Okky Hendra Muda | Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+ <script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brand: '#0aa2b5'
+        }
+      }
+    }
+  }
+</script>
+<style>
+
+    #cursor-effect {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+  </style>
+<style>
+<style>
+.section-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+/* GAMBAR */
+.section-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; /* ? FULL AREA */
+
+  opacity: 0.15; /* ?? lebih jelas dari sebelumnya */
+  filter: blur(1px); /* lebih tajam */
+
+  z-index: 0;
+}
+
+/* OVERLAY biar tetap readable */
+.section-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    #0f2a36 20%,
+    rgba(15,42,54,0.6) 50%,
+    transparent
+  );
+  z-index: 0;
+}
+
+.section-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* EXPERIENCE */
+.bg-experience::before {
+  background-image: url('https://image2url.com/r2/default/images/1774885102009-1e906a3a-59ba-4ff4-8998-a033710d55ee.jpeg');
+}
+
+</style>
+</style>
+</head>
+<body class="bg-[#0b1c26] text-white font-sans scroll-smooth">
+  
+<canvas id="cursor-effect"></canvas>
+<script>
+const canvas = document.getElementById("cursor-effect");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+document.addEventListener("mousemove", (e) => {
+  for (let i = 0; i < 3; i++) {
+    particles.push({
+      x: e.clientX,
+      y: e.clientY,
+      size: Math.random() * 4 + 1,
+      speedX: (Math.random() - 0.5) * 2,
+      speedY: (Math.random() - 0.5) * 2,
+      life: 100
+    });
+  }
+});
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  particles.forEach((p, i) => {
+    p.x += p.speedX;
+    p.y += p.speedY;
+    p.life--;
+
+  ctx.beginPath();
+ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+
+const colors = [
+  [139,92,246],
+  [255,40,0],    // merah Ferrari
+  [255,165,0]
+];
+
+const color = colors[Math.floor(Math.random() * colors.length)];
+
+ctx.fillStyle = `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${p.life / 100})`;
+
+ctx.shadowColor = "rgba(255,255,255,0.8)";
+ctx.shadowBlur = 15;
+
+ctx.fill();
+    if (p.life <= 0) particles.splice(i, 1);
+  });
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
+<!-- NAVBAR -->
+<header class="fixed w-full z-50 bg-[#0b1c26]/80 backdrop-blur px-10 py-4 flex justify-between items-center">
+  <h1 class="font-bold text-lg text-blue-400">Kos RumahOxygen Wonosobo</h1>
+  <nav class="flex gap-6 text-sm text-gray-300">
+    <a href="#" class="hover:text-blue-400">Home</a>
+    <a href="#about" class="hover:text-blue-400">About</a>
+    <a href="#resume" class="hover:text-blue-400">Fasility</a>
+    <a href="#testimony" class="hover:text-blue-400">Testimony</a>
+    <a href="#contact" class="hover:text-blue-400">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="min-h-screen flex items-center pt-20">
+  <div class="max-w-6xl mx-auto px-10 w-full">
+    
+    <div class="grid md:grid-cols-2 gap-10 items-center">
+      
+      <!-- TEXT -->
+      <div data-aos="fade-right">
+        <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-4">
+          welcome to  <br>
+         <span class="font-bold bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent
+          [ text-shadow:
+          0_0_10px_rgba(10,162,181,0.9),
+          0_0_20px_rgba(10,162,181,0.7),
+          0_0_40px_rgba(10,162,181,0.5)
+          ]">
+            Kos RumahOxygen
+          </span>
+        </h1>
+
+        <p class="text-xl text-gray-300 mb-4">
+                Kos Deluxe Harga Terjangkau    
+        </p>
+
+        <p class="text-gray-400 italic mb-8 max-w-lg">
+                ?? Amanah ?? Halal ?? Aman ??
+        </p>
+        <div class="flex gap-8 mt-10 text-center"> 
+          <div> 
+                <p class="text-2xl font-bold text-blue-400">3+</p>
+                <p class="text-sm text-gray-400">Years Experience</p> 
+          </div> 
+          <div> 
+                <p class="text-2xl font-bold text-blue-400">12K+</p> 
+                <p class="text-sm text-gray-400">Viewers</p> 
+          </div> 
+          <div> 
+                <p class="text-2xl font-bold text-blue-400">2.5K+</p> 
+                <p class="text-sm text-gray-400">Likes on Instagram</p> 
+          </div> 
+        </div>
+        <br>
+        <div class="flex gap-4">
+          <a href="#portfolio" class="bg-brand text-white px-6 py-3 rounded-full font-semibold hover:scale-105 transition">View Product</a>
+          <a 
+            href="https://wa.me/6281211518369?text=Halo%20saya%20tertarik%20menyewa%20kamar%20di%20Kos%20RumahOxygen"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-brand text-white px-6 py-3 rounded-full font-semibold hover:scale-105 transition"
+          >
+            Contact by WA
+          </a>
+          </div>
+      </div>
+
+      <!-- IMAGE -->
+      <div class="flex justify-center" data-aos="fade-left">
+        <img src="https://image2url.com/r2/default/images/1774882869942-1a4a1671-872f-447c-8a7e-9255d6569c96.jpeg" 
+         class="w-[350px] h-[350px] object-cover rounded-xl border border-gray-700 
+         shadow-[0_15px_30px_rgba(0,0,0,0.35),0_0_25px_rgba(0,150,255,0.5)] 
+         transition-all duration-300 hover:-translate-y-2 
+         hover:shadow-[0_25px_40px_rgba(0,0,0,0.5),0_0_40px_rgba(0,150,255,0.8)]"/>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-20 px-10 max-w-6xl mx-auto" data-aos="fade-up">
+  <h2 class="text-3xl font-bold mb-6">About Us</h2>
+  <p class="text-gray-300 leading-relaxed">
+RumahOxygen bukan sekadar tempat tinggal, tapi tempat untuk beristirahat dengan nyaman setelah hari yang panjang.
+Cocok untuk mahasiswa maupun pekerja yang mengutamakan kenyamanan, keamanan, dan lingkungan yang positif.  </p>
+<br><h2 class="text-3xl font-bold mb-10"style="text-shadow: 0 0 10px #22d3ee,
+                       0 0 20px #22d3ee,
+                       0 0 40px #22d3ee;">Kos RumahOxygen</h2>
+
+  <div class="grid md:grid-cols-2 gap-10 items-center">
+
+    <!-- IMAGE -->
+    <div class="relative w-full max-w-xl mx-auto overflow-hidden rounded-xl shadow-lg">
+
+  <!-- SLIDES -->
+  <div id="slider" class="flex transition-transform duration-500">
+    
+    <img src="https://image2url.com/r2/default/images/1774889917333-e98b6f37-2eaa-476e-afba-f8cea775b05b.jpg" class="w-full flex-shrink-0">
+    <img src="https://image2url.com/r2/default/images/1774897161940-71f3c144-6c39-4fd2-b348-6748ad9e8df5.png">
+    <img src="https://image2url.com/r2/default/images/1774900142992-334eff0c-58a3-417b-9fff-ec875611288f.jpg">
+    <img src="https://image2url.com/r2/default/images/1774899463624-db62fc28-7b0d-4fba-9750-d48049065d04.jpg">
+    <img src="https://image2url.com/r2/default/images/1774902926925-d723d146-7af6-4486-8e89-c41bca131e37.jpg">
+
+  </div>
+  <div class="flex justify-center mt-5 gap-4">
+  <span class="w-2 h-2 bg-white/50 rounded-full"></span>
+  <span class="w-2 h-2 bg-white/50 rounded-full"></span>
+  <span class="w-2 h-2 bg-white/50 rounded-full"></span>
+  <span class="w-2 h-2 bg-white/50 rounded-full"></span>
+  <span class="w-2 h-2 bg-white/50 rounded-full"></span>
+  </div>
+
+  <!-- BUTTON LEFT -->
+  <button onclick="prevSlide()" 
+    class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 px-3 py-1 rounded-full">
+    ?
+  </button>
+
+  <!-- BUTTON RIGHT -->
+  <button onclick="nextSlide()" 
+    class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 px-3 py-1 rounded-full">
+    ?
+  </button>
+
+</div>
+
+
+    <!-- CONTENT -->
+    <div>
+     <h3 class="text-2xl font-semibold mb-4 text-blue-300"
+       style="text-shadow: 0 0 10px #22d3ee,
+                       0 0 20px #22d3ee,
+                       0 0 40px #22d3ee;">
+      Hunian Nyaman di : >>> Wonosobo, Central Java, ID
+    </h3>
+            <p class="text-gray-300 mb-4 leading-relaxed">
+        Kos RumahOxygen hadir sebagai solusi tempat tinggal yang nyaman, bersih, dan strategis untuk mahasiswa maupun pekerja. Dengan suasana tenang dan fasilitas lengkap, kami menghadirkan pengalaman tinggal yang lebih dari sekadar kos.
+      </p>
+
+      <ul class="text-gray-400 text-sm space-y-2 mb-6">
+        
+      </ul>
+
+      <p class="text-gray-400 italic">
+        "Tempat terbaik untuk beristirahat, bekerja, dan menikmati suasana sejuk khas Wonosobo."
+      </p>
+    </div>
+
+  </div>
+</section>
+<section id="resume" class="py-20 bg-[#0f2a36]" data-aos="fade-up">
+  
+  <div class="max-w-6xl mx-auto px-10 ">
+
+    <!-- SUMMARY -->
+    <div class="mb-12 relative z-10">
+      <h2 class="text-3xl font-semibold mb-6">Keunggulan / Features</h2>
+
+      <p class="text-white-400 mb-4">
+      Kos RumahOxygen – Solusi Tempat Tinggal Ideal untuk Mahasiswa & Pekerja dengan Harga Bersahabat      </p>
+
+      <p class="text-blue-400 italic">
+      Cari kos yang nyaman, aman, dan strategis di Wonosobo?
+      RumahOxygen hadir untuk kamu yang butuh tempat tinggal dengan suasana tenang, fasilitas lengkap, dan harga yang tetap ramah di kantong.      </p>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="mb-12 section-bg bg-experience">
+      <h3 class="text-2xl font-semibold mb-6 text-blue-400">Experience</h3>
+
+      <div class="space-y-6">
+        <div class="border-l-2 border-blue-400 pl-6">
+          <h4 class="font-semibold">1. Lokasi Strategis ??</h4>
+          <p class="text-gray-300 text-sm mt-2">
+          Dekat kampus, pusat kota, dan fasilitas umum — memudahkan aktivitas harianmu.          </p>
+          </p>
+        </div>
+        <div class="border-l-2 border-blue-400 pl-6">
+          <h4 class="font-semibold">2. Harga Bersaing ?? </h4>
+          <p class="text-gray-300 text-sm mt-2">
+          Nikmati fasilitas lengkap tanpa harus khawatir soal biaya.          </p>
+        </div>
+        <div class="border-l-2 border-blue-400 pl-6">
+          <h4 class="font-semibold">3. Fasilitas Lengkap ??</h4>
+          <p class="text-gray-300 text-sm mt-2">
+            <li>? Kamar luas nyaman+ bed 180x200</li>
+            <li>? Kamar mandi bersih + water heater</li>
+            <li>? Meja &Kursi Kerja</li>
+            <li>? Rak 5 Susun</li>
+            <li>? Alat Ibadah</li>
+            <li>? Parkir tersedia (motor / mobil)</li>
+            <li>? Area bersama yang nyaman</li>          </p>
+        </div>
+        <div class="border-l-2 border-blue-400 pl-6">
+          <h4 class="font-semibold">4. Lingkungan Aman & Nyaman ??</h4>
+          <p class="text-gray-300 text-sm mt-2">
+          Suasana tenang dan keamanan terjaga untuk istirahat yang maksimal.          </p>
+        </div>
+        
+      </div>
+    </div>
+
+
+
+  </div>
+</section>
+<!-- PROJECTS / ACHIEVEMENTS -->
+<section id="portfolio" class="py-20 px-10 max-w-6xl mx-auto" data-aos="fade-up">
+  <h2 class="text-3xl font-bold mb-10">Product</h2>
+
+  <div class="grid md:grid-cols-3 gap-6">
+
+    <div class="bg-[#132d3a] rounded-xl overflow-hidden hover:scale-105 transition">
+
+      <div class="relative">
+        <img 
+          src="https://image2url.com/r2/default/images/1774899463624-db62fc28-7b0d-4fba-9750-d48049065d04.jpg" 
+          class="w-full h-48 object-cover"
+        >
+        <div class="absolute inset-0 bg-black/40"></div>
+    
+        <h3 class="absolute bottom-3 left-4 text-white font-semibold">
+        Kamar Type A
+        </h3>
+      </div>
+    
+      <div class="p-6">
+        <p class="text-gray-400 text-sm mb-2">
+Room 25 m², AC, Workbench, Tray, bed 180x200 (King size), toilet with sink, water heater, and shower, *+additional work room private.      </p>
+        </p>
+    
+        <p class="text-brand text-xs">? Get Promo discount 25% off</p>
+        <p class="text-white text-xs">Rp. 2.300.000,00 >>> Rp. 1.725.000,00</p>
+      </div>
+    
+    </div>
+    
+    <div class="bg-[#132d3a] rounded-xl overflow-hidden hover:scale-105 transition">
+
+      <div class="relative">
+        <img 
+          src="https://image2url.com/r2/default/images/1774902063562-a2d804d5-88bd-47e8-a39f-e79689795a6f.jpeg" 
+          class="w-full h-48 object-cover"
+        >
+        <div class="absolute inset-0 bg-black/40"></div>
+    
+        <h3 class="absolute bottom-3 left-4 text-white font-semibold">
+        Kamar Type B
+        </h3>
+      </div>
+    
+      <div class="p-6">
+        <p class="text-gray-400 text-sm mb-2">
+Room 15 m², AC, Workbench, Tray, bed 180x200 (King size), toilet with sink, water heater, and shower      </p>
+        </p>
+    
+        <p class="text-brand text-xs">? Get Promo Discount 20% off</p>
+        <p class="text-white text-xs">Rp. 2.000.000,00 >>> Rp. 1.600.000,00</p>
+      </div>
+    
+    </div>
+    
+    <div class="bg-[#132d3a] rounded-xl overflow-hidden hover:scale-105 transition">
+
+      <div class="relative">
+        <img 
+          src="https://image2url.com/r2/default/images/1774897161940-71f3c144-6c39-4fd2-b348-6748ad9e8df5.png" 
+          class="w-full h-48 object-cover"
+        >
+        <div class="absolute inset-0 bg-black/40"></div>
+    
+        <h3 class="absolute bottom-3 left-4 text-white font-semibold">
+        Kamar Type C
+        </h3>
+      </div>
+    
+      <div class="p-6">
+        <p class="text-gray-400 text-sm mb-2">
+Room 9 m², Air cooler (non ac), Workbench, Tray, bed 180x200 (King size), toilet with sink, water heater, and shower      </p>
+        </p>
+    
+        <p class="text-brand text-xs">? Get Promo Discount 10% off</p>
+        <p class="text-white text-xs">Rp. 1.500.000,00 >>> Rp. 1.350.000,00</p>
+      </div>
+    
+    </div>
+    
+    
+    <div class="bg-[#132d3a] rounded-xl overflow-hidden hover:scale-105 transition">
+
+      <div class="relative">
+        <img 
+          src="https://image2url.com/r2/default/images/1774880292802-c1f9f5cc-e19e-455c-aa1f-e4686f48b7f3.png" 
+          class="w-full h-48 object-cover"
+        >
+        <div class="absolute inset-0 bg-black/40"></div>
+    
+        <h3 class="absolute bottom-3 left-4 text-white font-semibold">
+          Layanan Kebersihan
+        </h3>
+      </div>
+    
+      <div class="p-6">
+        <p class="text-gray-400 text-sm mb-2">
+          Nikmati kamar yang selalu bersih dan nyaman tanpa repot.
+        </p>
+    
+        <p class="text-brand text-xs">? tergantung jumlah / bulan</p>
+        <p class="text-white text-xs">Rp. 150.000 – Rp. 250.000</p>
+      </div>
+    
+    </div>
+    
+    <div class="bg-[#132d3a] rounded-xl overflow-hidden hover:scale-105 transition">
+
+      <div class="relative">
+        <img 
+          src="https://image2url.com/r2/default/images/1774880706481-e0cb302e-8fdb-42b6-b479-4c20fd23b7d9.png" 
+          class="w-full h-48 object-cover"
+        >
+        <div class="absolute inset-0 bg-black/40"></div>
+    
+        <h3 class="absolute bottom-3 left-4 text-white font-semibold">
+        Layanan Cuci Gosok Pakaian
+        </h3>
+      </div>
+    
+      <div class="p-6">
+        <p class="text-gray-400 text-sm mb-2">
+        Nggak sempat cuci baju? Tenang! Kami siap bantu mencuci dan menyetrika pakaianmu agar selalu rapi dan siap dipakai setiap hari.      </p>
+        </p>
+    
+        <p class="text-brand text-xs">? tergantung jumlah / bulan</p>
+        <p class="text-white text-xs">Rp. 100.000 – Rp. 150.000</p>
+      </div>
+    
+    </div>
+    
+    <div class="bg-[#132d3a] rounded-xl overflow-hidden hover:scale-105 transition">
+
+      <div class="relative">
+        <img 
+          src="https://image2url.com/r2/default/images/1774881607868-3b4599d8-92a3-4416-8434-f9b7924e2280.blob" 
+          class="w-full h-48 object-cover"
+        >
+        <div class="absolute inset-0 bg-black/40"></div>
+    
+        <h3 class="absolute bottom-3 left-4 text-white font-semibold">
+        Meals
+        </h3>
+      </div>
+    
+      <div class="p-6">
+        <p class="text-gray-400 text-sm mb-2">
+        Nggak perlu bingung cari makan! Tersedia paket makan harian dengan menu lezat, higienis, dan bergizi untuk menunjang aktivitasmu.      </p>
+        </p>
+    
+        <p class="text-brand text-xs">? 1–2 kali makan per hari / bulan </p>
+        <p class="text-white text-xs">Rp. 600.000 – Rp. 1.000.000</p>
+      </div>
+    
+    </div>
+
+</section>
+
+<!-- PORTFOLIO -->
+<section id="testimony" class="py-20 px-10 bg-[#0f2a36]" data-aos="fade-up">
+  <h2 class="text-3xl font-bold mb-10">Testimony</h2>
+
+  <!-- GRID 2 KOLOM -->
+  <div class="grid md:grid-cols-2 gap-6 relative z-10">
+
+    <!-- CARD 1 -->
+    <div class="bg-[#132d3a] rounded-xl overflow-hidden hover:scale-105 transition flex items-center justify-center">
+      <img 
+        src="https://image2url.com/r2/default/images/1774887303996-35144955-c793-47fa-ae66-e78f440662e1.jpg" 
+        class="w-full object-contain"
+
+      >
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="bg-[#132d3a] rounded-xl overflow-hidden hover:scale-105 transition flex items-center justify-center">
+      <img 
+        src="https://image2url.com/r2/default/images/1774889565362-b8fe6730-371e-4b9d-8b2c-ebcfeb380eb8.jpg" 
+        class="w-full object-contain"
+
+      >
+      
+    </div>
+    <!-- EDUCATION -->
+    <div class="section-bg bg-education relative z-10">
+      <h3 class="text-2xl font-semibold mb-6 text-blue-400">?? TESTIMONIAL SECTION</h3>
+      <h4 class="text-2xl font-semibold mb-6 text-white-400">Kata Mereka Tentang RumahOxygen</h4>
+
+      <div class="space-y-6">
+        <div class="border-l-2 border-blue-400 pl-6">
+          <h4 class="font-semibold">– Andi, Mahasiswa</h4>
+          <p class="text-gray-400 text-sm">“Tempatnya nyaman banget, bersih, dan dekat ke kampus. Worth it banget!”
+          </p>
+        </div>
+
+        <div class="border-l-2 border-blue-400 pl-6">
+          <h4 class="font-semibold">– Danang, Karyawan</h4>
+          <p class="text-gray-400 text-sm">“Harga terjangkau dengan fasilitas lengkap, cocok buat pekerja seperti saya.”
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<br>
+<!-- CONTACT -->
+<section id="contact" class="py-20 bg-[#0f2a36] text-center" data-aos="fade-up">
+  <h2 class="text-3xl font-bold mb-6">Get Started</h2>
+  <p class="text-gray-300 mb-4">Tertarik untuk tinggal di RumahOxygen? Hubungi kami sekarang dan dapatkan promo terbaik!
+Continuous improvement</p>
+<br>
+<p>Hubungi Sekarang</p>
+  <p>Email: okkyhendra.muda2@gmail.com</p>
+  <p>Phone: 0812-1151-8369</p>
+</section>
+<br>
+<footer class="text-center py-6 text-gray-500">
+    © 2026 Kos RumahOxygen Wonosobo. All rights reserved.
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+<script>
+let index = 0;
+const slider = document.getElementById("slider");
+const totalSlides = slider.children.length;
+
+function showSlide(i) {
+  index = (i + totalSlides) % totalSlides;
+  slider.style.transform = `translateX(-${index * 100}%)`;
+}
+
+function nextSlide() {
+  showSlide(index + 1);
+}
+
+function prevSlide() {
+  showSlide(index - 1);
+}
+
+// AUTO SLIDE (optional ??)
+setInterval(() => {
+  nextSlide();
+}, 3000);
+</script>
+</body>
+</html>\
